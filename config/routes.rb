@@ -1,6 +1,6 @@
 ForUncle::Application.routes.draw do
-  get "clients/new"
-
+  
+  resources :clients
   root :to => 'static_pages#home'
 
   match 'signup', to: 'clients#new'
