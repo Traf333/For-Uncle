@@ -1,9 +1,15 @@
 ForUncle::Application.routes.draw do
   
-  resources :clients
-  root :to => 'static_pages#home'
+  
 
-  match 'signup', to: 'clients#new'
+  resources :clients do
+    resources :operations
+  end
+  root :to => 'static_pages#home'
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signup', to: 'clients#new'
+  match '/signin', to: 'session#new'
+  match '/signout', to: 'session#destroy', via: :delete
   match '/help', to: 'static_pages#help'
 
   match '/about', to: 'static_pages#about'

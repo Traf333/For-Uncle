@@ -1,0 +1,20 @@
+.well 
+  = form_for [@client, @operation] do |f|
+    - if @operation.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@operation.errors.count, "error")
+          prohibited this operation from being saved:
+        %ul
+          - @operation.errors.full_messages.each do |msg|
+            %li= msg
+    .row
+      .span3.field
+        = f.label "Сумма"
+        = f.text_field :value
+      .span6.field
+        = f.label "Комментарий"
+        = f.text_area :coment
+      .actions
+        %br/
+        = f.submit "Добавить операцию"

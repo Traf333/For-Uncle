@@ -1,5 +1,7 @@
 class Client < ActiveRecord::Base
-  attr_accessible :email, :name
+  attr_accessible :credit_limit, :name
+  has_many :operations, dependent: :destroy
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :credit_limit, presence: true
+  validates :name, presence: true
 end
