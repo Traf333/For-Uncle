@@ -20,12 +20,18 @@ body {
 
 section {
   overflow: auto;
+  padding: 10px;
 }
 
 textarea {
   resize: vertical;
 }
-
+.top-left {
+  float: left;
+}
+.top-right {
+  float: right;
+}
 .center {
   text-align: center;
   h1 {

@@ -1,0 +1,16 @@
+= form_for(@seller) do |f|
+  -if @seller.errors.any?
+    #error_explanation
+      %h2
+        Будте внимательны! Вы что-то не так ввели!
+    
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :password
+  = f.password_field :password
+
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation
+
+  = f.submit "Добавить продавца"

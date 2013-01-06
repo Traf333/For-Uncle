@@ -2,7 +2,7 @@ ForUncle::Application.routes.draw do
   
   
 
-  get "sellers/new"
+  resources :sellers
 
   resources :clients do
     resources :operations

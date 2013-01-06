@@ -1,20 +1,22 @@
-%section
+- provide(:title, @client.name)
+%section.top-left
   .header
     %h3
       ФИО клиента:
       = @client.name
-  .article
-    .header
-      %h2
-        Лимит долга:
-        = @client.credit_limit
+%section.top-rigth
+  .header
+    %h2
+      Лимит долга:
+      = @client.credit_limit
+%br
 %section
   = render 'operations/form'
 %section
   .header
     = render @operations
       
-%aside
+
   = link_to 'Edit', edit_client_path(@client)
   |
   =link_to 'Back', clients_path
