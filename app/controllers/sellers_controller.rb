@@ -22,4 +22,11 @@ class SellersController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    @seller = Seller.find(params[:id])
+    @seller.destroy
+
+    redirect_to sellers_url
+  end
 end

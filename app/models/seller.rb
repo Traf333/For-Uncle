@@ -4,7 +4,7 @@ class Seller < ActiveRecord::Base
 
   before_save :create_remember_token
   
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 

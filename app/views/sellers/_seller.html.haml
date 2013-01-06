@@ -1,2 +1,8 @@
-%li
-  = link_to seller.name, seller
+.row-fluid
+  .span5
+    = link_to seller.name, seller
+  .span5
+    = link_to "Удалить", seller, method: :delete, data: { confirm: "Вы уверены?" }
+
+%br
+= link_to "Новый продавец", new_seller_path
