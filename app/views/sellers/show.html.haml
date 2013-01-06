@@ -1,0 +1,8 @@
+- provide(:title, @seller.name)
+%h3 
+  Продавец:
+  = @seller.name
+%section
+  Список и сумма продаж за смену...
+
+= link_to "Список клиентов", clients_path

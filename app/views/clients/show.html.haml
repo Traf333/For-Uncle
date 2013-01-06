@@ -1,15 +1,16 @@
 - provide(:title, @client.name)
-%section.top-left
+%section  
   .header
-    %h3
-      ФИО клиента:
-      = @client.name
-%section.top-rigth
-  .header
-    %h2
-      Лимит долга:
-      = @client.credit_limit
+    .row
+      .span
+        %h3 Продавец: #{link_to current_seller.name, current_seller}
+      .span.pull-right
+        %h3 Лимит долга: #{@client.credit_limit}
+        %br
+        %h3 Остаток:
+  
 %br
+%h2 ФИО клиента: #{@client.name}
 %section
   = render 'operations/form'
 %section
