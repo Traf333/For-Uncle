@@ -2,6 +2,8 @@ ForUncle::Application.routes.draw do
   
   
 
+  get "sellers/new"
+
   resources :clients do
     resources :operations
   end
