@@ -5,6 +5,10 @@
       .span
         - if current_seller
           %h3 Продавец: #{link_to current_seller.name, current_seller}
+          - if current_seller.admin?
+            = link_to 'Edit', edit_client_path(@client)
+            |
+            =link_to 'Back', clients_path
       .span.pull-right
         %h3 Лимит долга: #{@client.credit_limit}
         %br
@@ -25,7 +29,3 @@
         %tbody
           = render @operations
         
-
-= link_to 'Edit', edit_client_path(@client)
-|
-=link_to 'Back', clients_path

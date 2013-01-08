@@ -2,7 +2,7 @@ class SellersController < ApplicationController
   
   before_filter :signed_in_seller, only: [:show, :edit, :update, :destroy]
   before_filter :correct_seller,   only: [:edit, :update]
-  before_filter :seller_admin,     only: [:new, :create, :edit, :update, :destroy]
+  before_filter :seller_admin,     only: [:edit, :update, :destroy]
   
   def index
     @sellers = Seller.all

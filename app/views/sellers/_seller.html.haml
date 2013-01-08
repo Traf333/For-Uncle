@@ -2,6 +2,7 @@
   .span5
     = link_to seller.name, seller
   .span5
-    = link_to "Удалить", seller, method: :delete, data: { confirm: "Вы уверены?" }
+    - if current_seller && current_seller.admin?
+      = link_to "Удалить", seller, method: :delete, data: { confirm: "Вы уверены?" }
 
 %br

@@ -34,6 +34,10 @@ module SessionsHelper
   def store_location
     session[:return_to] = request.fullpath
   end
+
+  def admin?(seller)
+    current_seller.admin == seller
+  end
   private
 
     def seller_from_remember_token
