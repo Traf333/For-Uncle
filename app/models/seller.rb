@@ -8,6 +8,8 @@ class Seller < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+  
+
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64

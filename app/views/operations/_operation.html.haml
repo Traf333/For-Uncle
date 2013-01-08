@@ -4,6 +4,6 @@
   %td 
     = operation.coment
   %td 
-    = operation.created_at
+    = operation.created_at.strftime("%k:%M %e  %B")
   / %td
   /   = link_to "delete", [@client, operation], method: :delete

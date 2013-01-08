@@ -1,0 +1,9 @@
+%li.timestamp
+  .row-fluid
+    .span3
+      .center= feed_item.value
+    .span5
+      = feed_item.client.name
+    .sapn4
+      = feed_item.created_at.strftime("%k:%M %e %B")
+  

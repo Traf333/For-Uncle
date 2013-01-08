@@ -8,7 +8,18 @@ module SessionsHelper
   def signed_in?
     !current_seller.nil?    
   end
+  
+  def signed_in_seller
+    unless signed_in?
+      store_location
+      redirect_to signin_path, notice: "Please sign in."
+    end
+  end
 
+  def feed
+    Operation.all
+  end
+  
   def sign_out
     current_seller = nil
     cookies.delete(:remember_token)

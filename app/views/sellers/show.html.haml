@@ -3,6 +3,9 @@
   Продавец:
   = @seller.name
 %section
-  Список и сумма продаж за смену...
+  %ol.operations
+    = render partial: 'shared/feed_item', collection: @feed_items 
+
+  = will_paginate @feed_items
 
 = link_to "Список клиентов", clients_path

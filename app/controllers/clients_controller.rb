@@ -16,7 +16,7 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @operations = @client.operations.paginate(page: params[:page])
-    @operation = @client.operations.new
+    @operation = @client.operations.build(params[:operation])
     @current_credit = @client.credit_limit - @client.operations.map {|i| i.value.to_i }.inject(0){|result, elem| result + elem }
 
     respond_to do |format|

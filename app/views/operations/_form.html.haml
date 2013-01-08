@@ -1,5 +1,6 @@
 .well 
   = form_for [@client, @operation] do |f|
+    = render 'shared/error_messages', object: f.object
     .row-fluid
       .span2.field
         = f.label :value, "Сумма"

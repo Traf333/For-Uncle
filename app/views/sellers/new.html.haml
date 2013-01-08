@@ -1,4 +1,5 @@
 - provide(:title, "Регистрация")
 = form_for @seller do |f|
   = render 'form', f: f
+  = render 'shared/error_messages', object: f.object
   = f.submit "Добавить продавца", class: "btn btn-primary"

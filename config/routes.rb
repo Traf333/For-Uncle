@@ -5,7 +5,7 @@ ForUncle::Application.routes.draw do
   resources :sellers
 
   resources :clients do
-    resources :operations
+    resources :operations, only: [:create, :destroy]
   end
   root :to => 'static_pages#home'
 

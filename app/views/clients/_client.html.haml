@@ -1,0 +1,6 @@
+%li
+  = link_to client.name, client 
+  - if signed_in?
+    - if current_seller.admin?
+      \|
+      = link_to "delete", client, method: :delete, data: { confirm: "Вы уверены?" } 

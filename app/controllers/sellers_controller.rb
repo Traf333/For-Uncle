@@ -10,6 +10,7 @@ class SellersController < ApplicationController
 
   def show
     @seller = Seller.find(params[:id])  
+    @feed_items = Operation.paginate(page: params[:page])
   end
 
   def new
@@ -49,13 +50,6 @@ class SellersController < ApplicationController
   end
 
   private
-
-    def signed_in_seller
-      unless signed_in?
-        store_location
-        redirect_to signin_path, notice: "Please sign in."
-      end
-    end
 
     def correct_seller
       @seller = Seller.find(params[:id])
