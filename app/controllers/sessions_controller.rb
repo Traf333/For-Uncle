@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     seller = Seller.find_by_name(params[:session][:name])
     if seller && seller.authenticate(params[:session][:password])
       sign_in seller
-      redirect_to seller
+      redirect_back_or seller
     else
       flash.now[:error] = "Invalid"
       render 'new'

@@ -3,14 +3,15 @@
     - if @operation.errors.any?
       #error_explanation
         %h2
-          Будте внимательны! Вы что-то не так ввели!
-    .row
-      .span3.field
+          Будте внимательны! Cумма не внесена!
+    .row-fluid
+      .span2.field
         = f.label :value, "Сумма"
         = f.text_field :value
       .span6.field
         = f.label :coment, "Комментарий"
-        = f.text_area :coment
-      .actions
-        %br/
-        = f.submit "Добавить операцию"
+        = f.text_field :coment
+      .span4.actions
+        %b Остаток: #{@current_credit} рублей
+        #ostatok
+          = f.submit "Добавить операцию", class: "btn btn-primary"

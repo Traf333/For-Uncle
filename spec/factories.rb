@@ -1,6 +1,7 @@
 FactoryGirl.define do
-  factory :client do
-    name     "Trofimov Igor"
-    email    "traf333@rambler.ru"
+  factory :seller do
+    sequence(:name)  { |n| "Person #{n}" }
+    password                 "traf333"
+    password_confirmation    "traf333"
   end
 end

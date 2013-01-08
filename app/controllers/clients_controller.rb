@@ -17,6 +17,8 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     @operations = @client.operations
     @operation = @client.operations.new
+    @current_credit = @client.credit_limit - @client.operations.map {|i| i.value.to_i }.inject(0){|result, elem| result + elem }
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @client }

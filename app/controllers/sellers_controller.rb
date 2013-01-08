@@ -1,8 +1,9 @@
 class SellersController < ApplicationController
   
-  before_filter :signed_in_seller, only: [:edit, :update]
+  before_filter :signed_in_seller, only: [:show, :edit, :update, :destroy]
   before_filter :correct_seller,   only: [:edit, :update]
-
+  before_filter :seller_admin,     only: [:new, :create, :edit, :update, :destroy]
+  
   def index
     @sellers = Seller.all
   end
@@ -42,20 +43,26 @@ class SellersController < ApplicationController
   end
 
   def destroy
-    @seller = Seller.find(params[:id])
-    @seller.destroy
-
+    Seller.find(params[:id]).destroy
+    flash[:success] = "Seller destroyed"
     redirect_to sellers_url
   end
 
   private
 
     def signed_in_seller
-      redirect_to signin_path, notice: "Please sign in." unless signed_in?
+      unless signed_in?
+        store_location
+        redirect_to signin_path, notice: "Please sign in."
+      end
     end
 
     def correct_seller
       @seller = Seller.find(params[:id])
       redirect_to root_path unless current_seller?(@seller)
+    end
+
+    def seller_admin
+      redirect_to(root_path) unless current_seller.admin?
     end
 end

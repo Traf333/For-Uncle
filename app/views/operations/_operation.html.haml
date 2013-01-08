@@ -1,7 +1,9 @@
-.row-fluid
-  .span3
+%tr
+  %td 
     = operation.value
-  .span5
+  %td 
     = operation.coment
-  .span4
+  %td 
     = operation.created_at
+  / %td
+  /   = link_to "delete", [@client, operation], method: :delete

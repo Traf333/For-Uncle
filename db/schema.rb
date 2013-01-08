@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106114557) do
+ActiveRecord::Schema.define(:version => 20130108093937) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(:version => 20130106114557) do
 
   create_table "sellers", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "password_digest"
     t.string   "remember_token"
+    t.boolean  "admin",           :default => false
   end
 
   add_index "sellers", ["remember_token"], :name => "index_sellers_on_remember_token"
