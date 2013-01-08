@@ -1,2 +1,4 @@
 - provide(:title, "Регистрация")
-= render 'form'
+= form_for @seller do |f|
+  = render 'form', f: f
+  = f.submit "Добавить продавца", class: "btn btn-primary"
