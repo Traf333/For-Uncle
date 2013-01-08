@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     @client = Client.find(params[:id])
-    @operations = @client.operations
+    @operations = @client.operations.paginate(page: params[:page])
     @operation = @client.operations.new
     @current_credit = @client.credit_limit - @client.operations.map {|i| i.value.to_i }.inject(0){|result, elem| result + elem }
 

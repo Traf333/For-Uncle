@@ -1,9 +1,5 @@
 .well 
   = form_for [@client, @operation] do |f|
-    - if @operation.errors.any?
-      #error_explanation
-        %h2
-          Будте внимательны! Cумма не внесена!
     .row-fluid
       .span2.field
         = f.label :value, "Сумма"

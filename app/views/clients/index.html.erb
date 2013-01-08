@@ -2,10 +2,12 @@
 
 
 <h1>Список клиентов</h1>
-
+<%= link_to 'New Client', new_client_path %>
+<%= will_paginate %>
 <ul>
   <%= render @clients %>
 </ul>
+<%= will_paginate %>
 <br />
 
-<%= link_to 'New Client', new_client_path %>
+

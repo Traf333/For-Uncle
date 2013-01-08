@@ -52,7 +52,8 @@ class OperationsController < ApplicationController
         flash[:success] = "Операция совершена"
         format.html { redirect_to @client }
       else
-        format.html { render action: "new" }
+        flash[:error] = "Неправильно введена сумма."
+        format.html { redirect_to @client }
       end
     end
   end

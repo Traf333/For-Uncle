@@ -27,5 +27,6 @@
             %th Примечание
             %th Время и дата покупки
         %tbody
+          
           = render @operations
-        
+          = will_paginate @operations
