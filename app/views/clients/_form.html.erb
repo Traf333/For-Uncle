@@ -17,9 +17,9 @@
   </div>
   <div class="field">
     <%= f.label :credit_limit, "Лимит кредита" %><br />
-    <%= f.number_field :credit_limit %>
+    <%= f.text_field :credit_limit %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Добавить клиента", class: "btn btn-large btn-primary" %>
   </div>
 <% end %>

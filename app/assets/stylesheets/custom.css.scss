@@ -6,6 +6,12 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+$param_shadow: 1px 1px 4px #bbb;
+@mixin box_shadow{
+  -webkit-box-shadow: $param_shadow;
+  -moz-box-shadow: $param_shadow;
+  box-shadow: $param_shadow;
+}
 $grayMediumLight: #eaeaea;
 
 /* universal */
@@ -21,10 +27,31 @@ body {
 section {
   overflow: auto;
   padding: 10px;
+  table {
+    min-width: 400px;
+    padding: 10px;
+    text-align: left;
+    tr {
+      border-top: 1px solid #bbb;
+      &:first-child {
+        border-top: 0px;
+      }
+    }
+    tbody {
+      tr:first-child {
+        border-top: 1px solid #bbb;
+      }
+    }
+    
+  }
 }
 
 textarea {
   resize: vertical;
+}
+.well {
+  @include box_shadow;
+  padding-bottom: 0;
 }
 .top-left {
   float: left;
@@ -92,6 +119,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
+
   a {
     color: $gray;
     &:hover {
@@ -115,10 +143,11 @@ footer {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 50%;
+  width: 100%;
   height: 30px;
   padding: 10px;
   @include box_sizing;
+  max-width: 400px;
 }
 #error_explanation {
   color:#f00;
@@ -126,6 +155,9 @@ input, textarea, select, .uneditable-input {
     list-style: none;
     margin: 0 0 18px 0;
   }
+}
+#ostatok {
+  margin: 6px;
 }
 
 .field_with_errors {

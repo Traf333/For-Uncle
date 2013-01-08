@@ -1,6 +1,6 @@
 - provide(:title, @client.name)
 %section  
-  .header
+  %header
     .row
       .span
         - if current_seller
@@ -8,17 +8,24 @@
       .span.pull-right
         %h3 Лимит долга: #{@client.credit_limit}
         %br
-        %h3 Остаток:
-  
+        
 %br
 %h2 ФИО клиента: #{@client.name}
 %section
   = render 'operations/form'
-%section
-  .header
-    = render @operations
-      
+  .row-fluid
+    .span4
+    .span8
+      %table
+        %thead
+          %tr
+            %th Сумма
+            %th Примечание
+            %th Время и дата покупки
+        %tbody
+          = render @operations
+        
 
-  = link_to 'Edit', edit_client_path(@client)
-  |
-  =link_to 'Back', clients_path
+= link_to 'Edit', edit_client_path(@client)
+|
+=link_to 'Back', clients_path

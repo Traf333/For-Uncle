@@ -1,9 +1,12 @@
 # encoding: utf-8
 class OperationsController < ApplicationController
+  
+  before_filter :correct_client, only: [:index, :show, :new, :create]
+
+
   # GET /operations
   # GET /operations.json
   def index
-    @client = Client.find(params[:client_id])
     @operations = @client.operations
 
     respond_to do |format|
@@ -15,9 +18,8 @@ class OperationsController < ApplicationController
   # GET /operations/1
   # GET /operations/1.json
   def show
-    @client = Client.find(params[:client_id])
     @operation = @client.operations.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @operation }
@@ -27,7 +29,6 @@ class OperationsController < ApplicationController
   # GET /operations/new
   # GET /operations/new.json
   def new
-    @client = Client.find(params[:client_id])
     @operation = @client.operations.new
 
     respond_to do |format|
@@ -38,16 +39,14 @@ class OperationsController < ApplicationController
 
   # GET /operations/1/edit
   def edit
-    @client = Client.find(params[:client_id])
     @operation = @client.operations.find(params[:client_id])
   end
 
   # POST /operations
   # POST /operations.json
   def create
-    @client = Client.find(params[:client_id])
     @operation = @client.operations.new(params[:operation])
-
+    
     respond_to do |format|
       if @operation.save
         flash[:success] = "Операция совершена"
@@ -61,7 +60,6 @@ class OperationsController < ApplicationController
   # PUT /operations/1
   # PUT /operations/1.json
   def update
-    @client = Client.find(params[:client_id])
     @operation = @client.operations.find(params[:client_id])
 
     respond_to do |format|
@@ -82,8 +80,14 @@ class OperationsController < ApplicationController
     @operation.destroy
 
     respond_to do |format|
-      format.html { redirect_to operations_url }
+      format.html { render clients_path }
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def correct_client
+      @client = Client.find(params[:client_id])
+    end
 end
