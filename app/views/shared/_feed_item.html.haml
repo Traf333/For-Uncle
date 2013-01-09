@@ -2,8 +2,10 @@
   .row-fluid
     .span3
       .center= feed_item.value
-    .span5
+    .span3
       = feed_item.client.name
-    .sapn4
+    .span3
+      = feed_item.coment.blank? ? "..." : feed_item.coment
+    .sapn3
       = feed_item.created_at.strftime("%k:%M %e %B")
   
